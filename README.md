@@ -33,49 +33,5 @@ When CPU usage exceeds 75%, new instances are automatically created in GCP.
 ## Architecture Diagram
 
 
-+---------------------------+
-|   User / Browser          |
-|   (/load endpoint)        |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Flask Application       |
-|   (Generates CPU Load)    |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Metrics Export          |
-| (Node Exporter + App)     |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Prometheus              |
-|   (Metrics Collection)    |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Grafana                 |
-|   (Visualization)         |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   monitor.py              |
-|   (Scaling Decision)      |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Google Cloud Platform   |
-|   Managed Instance Group  |
-+------------+--------------+
-             |
-             v
-+---------------------------+
-|   Auto Scaling            |
-|   (New VMs Created)       |
-+---------------------------+
+
+<img width="983" height="1506" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/3d233f3c-6c18-4d0a-8029-c8a4d909f3de" />
