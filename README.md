@@ -32,8 +32,8 @@ When CPU usage exceeds 75%, new instances are automatically created in GCP.
 
 ## Architecture Diagram
 
+<img width="983" height="1506" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/e47460ac-0112-4efb-8f1c-f10fb4cc1569" />
 
-<img width="983" height="1506" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/58e33777-5d74-45f5-9b23-0882b4bfc5b9" />
 
 
 ## Author
