@@ -25,7 +25,7 @@ To monitor resource usage on a local VM and automatically scale instances in Goo
    python3 app.py & sleep 2 && python3 monitor.py
 
 5. Trigger load:
-   http://<VM-IP>:5000/load
+   http://VM-IP:5000/load
 
 ## Result
 When CPU usage exceeds 75%, new instances are automatically created in GCP.
