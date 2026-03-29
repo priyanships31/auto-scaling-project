@@ -31,41 +31,23 @@ To monitor resource usage on a local VM and automatically scale instances in Goo
 When CPU usage exceeds 75%, new instances are automatically created in GCP.
 
 ## Architecture Diagram
-        ┌──────────────────────┐
-        │     Local VM         │
-        │ (Ubuntu + Flask App) │
-        └─────────┬────────────┘
-                  │
-                  ▼
-        ┌──────────────────────┐
-        │   Flask App (app.py) │
-        │  Generates CPU Load  │
-        └─────────┬────────────┘
-                  │
-                  ▼
-        ┌──────────────────────┐
-        │   Prometheus         │
-        │ Collects Metrics     │
-        └─────────┬────────────┘
-                  │
-                  ▼
-        ┌──────────────────────┐
-        │     Grafana          │
-        │ Visualizes Metrics   │
-        └─────────┬────────────┘
-                  │
-                  ▼
-        ┌──────────────────────┐
-        │   monitor.py Script  │
-        │ Checks CPU > 75%     │
-        └─────────┬────────────┘
-                  │
-                  ▼
-        ┌──────────────────────┐
-        │  Google Cloud (GCP)  │
-        │ Managed Instance     │
-        │ Group Scaling        │
-        └──────────────────────┘
+
+
+A[Local VM<br>Ubuntu 22.04] --> B[Flask App (app.py)<br>Generates CPU Load]
+
+B --> C[Prometheus<br>Collects Metrics]
+
+C --> D[monitor.py Script<br>
+Reads CPU using psutil<br>
+Scale UP if CPU > 75%<br>
+Scale DOWN if CPU < 30%<br>
+Uses gcloud CLI]
+
+C --> E[Grafana<br>Visualizes Metrics]
+
+D --> F[Google Cloud (GCP)<br>Managed Instance Group]
+
+F --> G[Auto Scaling<br>Add/Remove e2-micro Instances]
 
 ## Author
 Priyanshi
