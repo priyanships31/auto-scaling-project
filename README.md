@@ -30,5 +30,42 @@ To monitor resource usage on a local VM and automatically scale instances in Goo
 ## Result
 When CPU usage exceeds 75%, new instances are automatically created in GCP.
 
+## Architecture Diagram
+        ┌──────────────────────┐
+        │     Local VM         │
+        │ (Ubuntu + Flask App) │
+        └─────────┬────────────┘
+                  │
+                  ▼
+        ┌──────────────────────┐
+        │   Flask App (app.py) │
+        │  Generates CPU Load  │
+        └─────────┬────────────┘
+                  │
+                  ▼
+        ┌──────────────────────┐
+        │   Prometheus         │
+        │ Collects Metrics     │
+        └─────────┬────────────┘
+                  │
+                  ▼
+        ┌──────────────────────┐
+        │     Grafana          │
+        │ Visualizes Metrics   │
+        └─────────┬────────────┘
+                  │
+                  ▼
+        ┌──────────────────────┐
+        │   monitor.py Script  │
+        │ Checks CPU > 75%     │
+        └─────────┬────────────┘
+                  │
+                  ▼
+        ┌──────────────────────┐
+        │  Google Cloud (GCP)  │
+        │ Managed Instance     │
+        │ Group Scaling        │
+        └──────────────────────┘
+
 ## Author
 Priyanshi
